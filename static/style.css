@@ -1,0 +1,33 @@
+/* *{
+    margin: 0px;
+}
+
+#main{
+    border: 2px solid black;
+    /* margin-top: 10px; */
+/* }
+
+#canvas{
+    border: 2px solid black;
+    height: 700px;
+    width: 80%;
+    margin: auto;
+}
+
+#form-body{
+    border: 1px solid black;
+    width: 300px;
+    height: 400px;
+    margin: auto;
+    margin-top: 200px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+} */ 
+
+body { background: #f0f1f6; font-family: Arial, sans-serif;}
+#main, #canvas { border-radius: 7px; background: #fff; box-shadow: 0 1px 8px #bbb; margin: 10px 0;}
+#form-body { background: #f8fafd; margin: 30px auto; padding: 14px 16px; border-radius: 5px; }
+.table { font-size: 15px;}
+.btn { margin: 2px 4px;}
+.card { margin: 0 auto; max-width: 425px; padding: 14px 12px;}

@@ -1,0 +1,72 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a new Doctor</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+    <div id="main">
+        <div id="canvas">
+            <div id="form-body">
+                <h2>Add a new Doctor    </h2>
+                <form action="">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="name" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="specs" class="form-label">Specialization/Department</label>
+                        <input type="email" class="form-control" id="specs" >
+                    </div>
+                    <div class="mb-3">
+                        <label for="exp" class="form-label">Experience</label>
+                        <input type="password" class="form-control" id="exp" >
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Create"><br>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Doctor</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="main">
+    <div id="canvas">
+        <div id="form-body">
+            <h2>Add a new Doctor    </h2>
+            <form action="{{ url_for('main.add_doctor') }}" method="post">
+                <div class="mb-3">
+                    <label class="form-label">Full Name</label>
+                    <input type="text" name="username" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Specialization</label>
+                    <input type="text" name="specialization" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Experience (years)</label>
+                    <input type="number" name="experience" class="form-control">
+                </div>
+                <input type="submit" class="btn btn-primary" value="Create">
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

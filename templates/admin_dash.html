@@ -1,0 +1,168 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        #form-body {
+            border: 1px solid black;
+            width: 725px;
+            height: 632px;
+            margin: auto;
+            margin-top: 17px;
+            text-align: center;
+            border-radius: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="canvas">
+            <div id="form-body">
+                <h2>Admin Dashboard</h2>
+                <div class="mb-3 d-flex align-items-center justify-content-between">
+                    <h5>Welcome Admin</h5>
+                    <div class="d-flex">
+                        <input type="text" class="form-control me-2" placeholder="doctor, patient, department...">
+                        <button class="btn btn-primary me-2">Search</button>
+                        <button class="btn btn-success">Create</button>
+                    </div>
+                </div>
+                <hr>
+
+                <h5>Registered Doctors</h5>
+                <div class="border p-3 mb-3">
+                    <div class="d-flex justify-content-between align-items-center mb-2 border p-2">
+                        <span>Dr. abcde</span>
+                        <div>
+                            <button class="btn btn-warning btn-sm">Edit</button>
+                            <button class="btn btn-danger btn-sm">Delete</button>
+                            <button class="btn btn-secondary btn-sm">Blacklist</button>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center border p-2">
+                        <span>Dr. pqrst</span>
+                        <div>
+                            <button class="btn btn-warning btn-sm">Edit</button>
+                            <button class="btn btn-danger btn-sm">Delete</button>
+                            <button class="btn btn-secondary btn-sm">Blacklist</button>
+                        </div>
+                    </div>
+                </div>
+
+                <h5>Registered Patients</h5>
+                <div class="border p-3 mb-3">
+                    <div class="d-flex justify-content-between align-items-center mb-2 border p-2">
+                        <span>Mr. abcde</span>
+                        <div>
+                            <button class="btn btn-warning btn-sm">Edit</button>
+                            <button class="btn btn-danger btn-sm">Delete</button>
+                            <button class="btn btn-secondary btn-sm">Blacklist</button>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center border p-2">
+                        <span>Miss. pqrst</span>
+                        <div>
+                            <button class="btn btn-warning btn-sm">Edit</button>
+                            <button class="btn btn-danger btn-sm">Delete</button>
+                            <button class="btn btn-secondary btn-sm">Blacklist</button>
+                        </div>
+                    </div>
+                </div>
+
+                <h5>Upcoming Appointments</h5>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Sr No.</th>
+                            <th>Patient Name</th>
+                            <th>Doctor Name</th>
+                            <th>Department</th>
+                            <th>Patient History</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1001.</td>
+                            <td>Mr. abcde</td>
+                            <td>Dr. pqrst</td>
+                            <td>Cardiology</td>
+                            <td><button class="btn btn-primary btn-sm">View</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="main">
+    <div id="canvas">
+        <div id="form-body">
+            <h2>Admin Dashboard</h2>
+            <div class="mb-4">
+                <h5>Welcome Admin</h5>
+                <a href="{{ url_for('main.logout') }}">Logout</a>
+            </div>
+            <div class="d-flex justify-content-between">
+                <div>Total Doctors: {{ doctors|length }}</div>
+                <div>Total Patients: {{ patients|length }}</div>
+                <div>Total Appointments: {{ appointments|length }}</div>
+            </div>
+            <hr>
+            <h5>Registered Doctors</h5>
+            <div class="border p-3 mb-3">
+                {% for doc in doctors %}
+                <div class="d-flex justify-content-between align-items-center border mb-2 p-2">
+                    <span>{{ doc.user.username }} ({{ doc.specialization }})</span>
+                </div>
+                {% endfor %}
+            </div>
+            <h5>Registered Patients</h5>
+            <div class="border p-3 mb-3">
+                {% for pat in patients %}
+                <div class="d-flex justify-content-between align-items-center border mb-2 p-2">
+                    <span>{{ pat.user.username }}</span>
+                </div>
+                {% endfor %}
+            </div>
+            <h5>Upcoming Appointments</h5>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Sr No.</th>
+                        <th>Patient Name</th>
+                        <th>Doctor Name</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for a in appointments %}
+                    <tr>
+                        <td>{{ a.id }}</td>
+                        <td>{{ a.patient.user.username }}</td>
+                        <td>{{ a.doctor.user.username }}</td>
+                        <td>{{ a.status }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
